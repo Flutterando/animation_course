@@ -34,8 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Center(
               child: isLoading
                   ? const CircularProgressIndicator(
-                      valueColor:
-                          const AlwaysStoppedAnimation<Color>(Colors.white),
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                     )
                   : const Text(
                       'ENTER',
