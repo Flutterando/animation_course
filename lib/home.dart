@@ -7,44 +7,67 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var isLoading = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Animations'),
-      ),
       body: Center(
-        child: GestureDetector(
-          onTap: () {
-            setState(() {
-              isLoading = !isLoading;
-            });
-          },
-          child: AnimatedContainer(
-            duration: const Duration(seconds: 1),
-            curve: Curves.bounceOut,
-            width: isLoading ? 60 : 300,
-            height: 60,
-            decoration: BoxDecoration(
-              color: Colors.deepPurple,
-              borderRadius: BorderRadius.circular(isLoading ? 30 : 20),
-            ),
-            child: Center(
-              child: isLoading
-                  ? const CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                    )
-                  : const Text(
-                      'ENTER',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  height: 100,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(100),
+                      topRight: Radius.circular(100),
                     ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  height: 100,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(100),
+                      bottomRight: Radius.circular(100),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const Text(
+                  'Flutterando',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Container(
+                  height: 2,
+                  width: 180,
+                  color: Colors.white,
+                ),
+                const Text(
+                  'Animation',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
